@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
                 {children}
             </div> */}
-            <div className="relative flex w-full h-full">
+            <div className="relative flex w-screen h-full">
                 <div
                     id="doc_boundary"
                     className="
@@ -32,13 +32,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     w-2/3
                     h-full
                     m-auto
-                    
+                    grid-cols-12
                     border-2
                     border-b-amber-300"
                 >
-                    <a href="#bot" className="w-5 h-5">
-                        abb
-                    </a>
+                    <TopNavBar />
                     {children}
                     <Footer/>
                 </div>

@@ -4,6 +4,22 @@
     --color-topbar-color: oklch(0.4013 0.0664 220.58);
     --color-footer-color: rgba(23, 103, 123, 0.1);
     --text-dafuq: 100rem;
+    --font-omega: "BROmegaVN", sans-serif;
+}
+
+/* 1. Định nghĩa font-face như bình thường */
+@font-face {
+    font-family: "BROmegaVN";
+    src: url("/fonts/BROmegaVN/BROmegaVN-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "BROmegaVN";
+    src: url("/fonts/BROmegaVN/BROmegaVN-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
 }
 
 @layer base {
@@ -146,12 +162,14 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
     overflow-x: hidden;
+    font-family: var(--font-omega);
+    color: #7b9ca4;
 }
 
 body {
-    height: 10000px;
+    height: fit-content;
 }
 
 body::-webkit-scrollbar {
