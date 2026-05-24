@@ -1,11 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Button } from "antd";
-
+import { useEffect, useState, useRef } from "react";
+import { IoIosMenu } from "react-icons/io";
 export const TopNavBar = () => {
     const [isScroll, setIsScroll] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node)
+            ) {
+                setIsMenuOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,86 +38,78 @@ export const TopNavBar = () => {
         };
     }, []);
 
+    const openMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
-        <div
-            className={`fixed flex justify-center top-0 left-0 w-full h-[108px] transition-colors duration-300 ${
-                isScroll ? "bg-topbar-color" : "bg-topbar-color/0"
-            }`}
-        >
-            <div className="w-2/3 h-full flex items-center justify-between">
-                {/* Add your top navigation bar content here */}
-                <div id="nav-links" className="flex items-center space-x-8">
-                    <div id="nav-brand-logo" className="">
+        <>
+            <nav id="navbar" className="w-screen h-30 flex justify-between">
+                {/* logo */}
+                <div className="flex items-center justify-center px-10">
+                    <Link href="#">
                         <img
-                            src="/images/graphics/logo-white752b.png"
-                            alt="Recland logo"
-                            className="h-fit w-fit"
+                            src="images\graphics\logo-white752b.png"
+                            alt="Recland white logo"
+                            className="
+                        w-40 self-center"
                         />
-                    </div>
-                    <nav>
-                        <ul className="flex space-x-4">
-                            <li>
-                                <Link
-                                    href="/jobs"
-                                    className="text-white hover:text-gray-300"
-                                >
-                                    Tìm việc
-                                </Link>
+                    </Link>
+                </div>
+                {/* menu mobile */}
+                <div className="flex justify-center items-center px-10">
+                    <button type="button" onClick={openMenu}>
+                        <IoIosMenu fill="white" size={32} />
+                    </button>
+                    <div
+                        ref={menuRef}
+                        className={`
+                                absolute
+                                flex
+                                flex-col
+                                w-screen
+                                h-fit
+                                left-0
+                                top-0
+                                transition-all                     
+                                duration-300   
+                                bg-white                    
+                                ${
+                                    isMenuOpen
+                                        ? "translate-x-0"
+                                        : "translate-x-full"
+                                }`}
+                    >
+                        <div className="w-screen h-30 border-b border-gray-200 flex items-center">
+                            <img
+                                src="images\graphics\logo.png"
+                                alt="Recland logo"
+                                className="h-16 px-6"
+                            />
+                        </div>
+                        <ul
+                            id="mobile_nav"
+                            className="flex flex-col text-3xl px-6 leading-10 py-10 font-medium text-gray-400"
+                        >
+                            <li className="">
+                                <Link href="/jobs">Tìm việc</Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/company"
-                                    className="text-white hover:text-gray-300"
-                                >
-                                    Công ty
-                                </Link>
+                                <Link href="/company">Công ty</Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/blog"
-                                    className="text-white hover:text-gray-300"
-                                >
-                                    Blog
-                                </Link>
+                                <Link href="/blog">Blog</Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/about"
-                                    className="text-white hover:text-gray-300"
-                                >
-                                    About
-                                </Link>
+                                <Link href="/about">Giới thiệu</Link>
                             </li>
                             <li>
-                                <Link
-                                    href="/contact"
-                                    className="text-white hover:text-gray-300"
-                                >
-                                    Contact
-                                </Link>
+                                <Link href="/contact">Liên hệ</Link>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-                <div id="nav-actions" className="flex items-center space-x-4">
-                    <div id="flag">
-                        <img
-                            src="/images/flag/flag-en752b.svg"
-                            alt="United States flag"
-                            className="h-5 w-5"
-                        />
-                    </div>
-                    <div id="user-actions">
-                        {/* Add user action buttons here */}
-                        <Button type="primary" className="bg-white text-topbar-color hover:bg-gray-200">
-                            Cộng tác viên
-                        </Button>
-                        <Button className="text-white hover:text-gray-300">
-                            Nhà tuyển dụng
-                        </Button>
                     </div>
                 </div>
-            </div>
-        </div>
+            </nav>
+        </>
     );
 };

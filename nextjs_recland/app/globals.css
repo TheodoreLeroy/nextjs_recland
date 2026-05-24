@@ -166,13 +166,24 @@ html {
     overflow-x: hidden;
     font-family: var(--font-omega);
     color: #7b9ca4;
+    ::-webkit-scrollbar {
+        /* background-color: #fff;
+        width: 1px; */
+        display: none;
+    }
+}
+
+#mobile_nav>li {
+    /* padding-top: 10px;
+    padding-bottom: 10px;
+    flex-grow: 1; */
 }
 
 body {
     height: fit-content;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     background-color: #fff;
     width: 6px;
 }
@@ -182,7 +193,7 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
     background-color: #fff;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+} */
 
 /* .sweet-modal-overlay.dark-modal div::-webkit-scrollbar-thumb,
 .sweet-modal-overlay.dark-modal pre::-webkit-scrollbar-thumb {
