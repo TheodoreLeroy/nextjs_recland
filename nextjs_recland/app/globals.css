@@ -5,6 +5,10 @@
     --color-footer-color: rgba(23, 103, 123, 0.1);
     --text-dafuq: 100rem;
     --font-omega: "BROmegaVN", sans-serif;
+    --breakpoint-*: initial;
+    --breakpoint-tablet: 921px;
+    --breakpoint-laptop: 64rem;
+    --breakpoint-desktop: 80rem;
 }
 
 /* 1. Định nghĩa font-face như bình thường */
@@ -173,7 +177,7 @@ html {
     }
 }
 
-#mobile_nav>li {
+#mobile_nav > li {
     /* padding-top: 10px;
     padding-bottom: 10px;
     flex-grow: 1; */
