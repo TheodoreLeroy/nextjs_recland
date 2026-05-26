@@ -5,92 +5,96 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { IoIosMenu } from "react-icons/io";
 import Button from "./Button";
-import logo from "./logo.png";
-export const TopNavBar = () => {
-    const [isScroll, setIsScroll] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+import { usePathname } from "next/navigation";
+import { NAV_ITEMS } from "../constants/navigation";
+import { useUIStore } from "../store/ui.store";
+interface NavBarProps {
+    // Add any props if needed in the future
+    variant?: "primary" | "secondary";
+    className?: string;
+}
+
+export const TopNavBar = ({ variant = "primary", className }: NavBarProps) => {
+    // const [isScroll, setIsScroll] = useState(false);
+    // const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+    const { isScroll, isMenuOpen, toggleMenu } = useUIStore();
 
     const menuRef = useRef<HTMLDivElement>(null);
-    const menuItems: { [key: string]: string } = {
-        "Tìm việc": "/jobs",
-        "Công ty": "/company",
-        Blog: "/blog",
-        "Giới thiệu": "/about",
-        "Liên hệ": "/contact",
-    };
 
+    const pathname = usePathname();
+    const isHomePage = pathname === "/home";
+    const isActive = (href: string) => pathname === href;
     // useEffect(() => {
-    //     function handleClickOutside(event: MouseEvent) {
+    //     const handleScroll = () => {
+    //         setIsScroll(window.scrollY > 0);
+    //     };
+
+    //     const handleClickOutside = (event: MouseEvent) => {
     //         if (
     //             menuRef.current &&
     //             !menuRef.current.contains(event.target as Node)
     //         ) {
     //             setIsMenuOpen(false);
     //         }
-    //     }
-
+    //     };
     //     document.addEventListener("mousedown", handleClickOutside);
+    //     window.addEventListener("scroll", handleScroll);
 
     //     return () => {
     //         document.removeEventListener("mousedown", handleClickOutside);
+    //         window.removeEventListener("scroll", handleScroll);
     //     };
     // }, []);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScroll(window.scrollY > 0);
-        };
-
         const handleClickOutside = (event: MouseEvent) => {
             if (
                 menuRef.current &&
                 !menuRef.current.contains(event.target as Node)
             ) {
-                setIsMenuOpen(false);
+                toggleMenu();
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
-        window.addEventListener("scroll", handleScroll);
-
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
-            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
-    const openMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
     return (
-        <div className={`fixed top-0 w-full flex justify-center transition-all duration-300 ${isScroll ? "bg-topbar-color": ""}`}>
+        <div
+            className={`fixed top-0 w-full flex justify-center transition-all duration-300 ${isHomePage ? "" : "shadow-md"} ${isHomePage && isScroll ? "bg-topbar-color" : ""} ${className}`}
+        >
             <nav
                 id="navbar"
-                className="w-full h-30 flex items-center justify-between tablet:w-fit"
+                className="w-full max-h-30 flex items-center justify-between"
             >
                 {/* Logo */}
                 <div className="flex items-center px-10">
                     <Link href="/home">
                         <Image
-                            src="/images/graphics/logo-white752b.png"
+                            src={`${isHomePage ? "/images/graphics/logo-white752b.png" : "/images/graphics/logo.png"}`}
                             alt="Recland logo"
                             width={120}
                             height={120}
+                            className="min-w-20"
                             priority
                         />
                     </Link>
                 </div>
 
                 {/* Desktop Menu */}
-                <div className="hidden tablet:flex items-center gap-10 px-10">
+                <div className="hidden laptop:flex items-center gap-10 px-10">
                     <ul className="flex items-center gap-8">
-                        {Object.entries(menuItems).map(([key, value]) => (
-                            <li key={key} className="text-nowrap">
+                        {NAV_ITEMS.map((item) => (
+                            <li key={item.href} className="text-nowrap">
                                 <Link
-                                    href={value}
-                                    className="text-gray-300 text-2xl hover:text-gray-300 transition"
+                                    href={item.href}
+                                    className={`${isHomePage ? "text-gray-300 hover:text-white" : "text-gray-400 hover:text-gray-300"}
+                                    ${isActive(item.href) ? "text-teal-600" : ""}
+                                     transition`}
                                 >
-                                    {key}
+                                    {item.label}
                                 </Link>
                             </li>
                         ))}
@@ -105,16 +109,17 @@ export const TopNavBar = () => {
                                 height={20}
                             ></Image>
                         </Link>
-                        <Button>Cộng tác viên</Button>
-
-                        <Button variant="outlined">Nhà tuyển dụng</Button>
+                        <Button variant="outlined">Đăng nhập</Button>
                     </div>
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="tablet:hidden flex items-center px-10">
-                    <button type="button" onClick={openMenu}>
-                        <IoIosMenu fill="white" size={36} />
+                <div className="laptop:hidden flex items-center px-10">
+                    <button type="button" onClick={toggleMenu}>
+                        <IoIosMenu
+                            fill={`${isHomePage ? "white" : "#115061"}`}
+                            size={36}
+                        />
                     </button>
                 </div>
 
@@ -122,7 +127,7 @@ export const TopNavBar = () => {
                 <div
                     ref={menuRef}
                     className={`
-                    tablet:hidden
+                    laptop:hidden
                     fixed top-0 right-0
                     w-screen h-fit
                     bg-white
@@ -145,27 +150,35 @@ export const TopNavBar = () => {
                             </Link>
                         </li>
 
-                        {Object.entries(menuItems).map(([key, value]) => (
-                            <li key={key}>
-                                <Link
-                                    href={value}
-                                    className="
+                        {NAV_ITEMS.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <li key={item.href} className="text-nowrap">
+                                    <Link
+                                        href={item.href}
+                                        className={`
                                     block
-                                    text-3xl
+                                    text-lg
+                                    tablet:text-xl
                                     hover:text-gray-300
+                                    ${isActive ? "text-topbar-color shadow-md/10 rounded-2xl" : "text-gray-500"}
                                     px-5
-                                    py-5
-                                "
-                                >
-                                    {key}
-                                </Link>
-                            </li>
-                        ))}
+                                    py-4
+                                `}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            );
+                        })}
 
-                        <div className="flex flex-col gap-5 px-5 mt-5">
-                            <Button>Cộng tác viên</Button>
-
-                            <Button variant="outlined">Nhà tuyển dụng</Button>
+                        <div className="flex flex-col gap-5 px-5 mt-5 items-center ">
+                            <Button
+                                variant="outlined"
+                                className="tablet:text-xl"
+                            >
+                                Đăng nhập
+                            </Button>
                         </div>
                     </ul>
                 </div>

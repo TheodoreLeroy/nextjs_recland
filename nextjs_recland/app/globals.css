@@ -6,7 +6,7 @@
     --text-dafuq: 100rem;
     --font-omega: "BROmegaVN", sans-serif;
     --breakpoint-*: initial;
-    --breakpoint-tablet: 921px;
+    --breakpoint-tablet: 48rem;
     --breakpoint-laptop: 64rem;
     --breakpoint-desktop: 80rem;
 }
@@ -159,13 +159,13 @@
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing: inherit;
     /* outline: 1px solid red !important; */
 }
 
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
+    /* font-size: 62.5%; */
     scroll-behavior: smooth !important;
     overflow-x: hidden;
     font-family: var(--font-omega);

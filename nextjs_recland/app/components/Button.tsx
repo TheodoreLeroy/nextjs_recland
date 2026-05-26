@@ -16,9 +16,14 @@ export default function Button({
 }: ButtonProps) {
     const baseStyles = `
         w-full
-        h-[50px]
+        min-w-60
+        max-w-120
+        py-4
+        laptop:py-3
+        laptop:w-fit
         rounded-[18px]
-        text-3xl
+        text-sm
+        laptop:text-lg
         font-semibold
         transition-all
         duration-300

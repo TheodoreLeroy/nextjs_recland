@@ -8,7 +8,7 @@ export default function HomePage() {
             relative
             "
             ></section>
-            <img
+            {/* <img
                 src="/bg-top.jpg"
                 alt="Recland hero background"
                 className="
@@ -17,7 +17,7 @@ export default function HomePage() {
                     sm:h-fit 
                     md:-top-109
                     "
-            />
+            /> */}
         </>
     );
 }
