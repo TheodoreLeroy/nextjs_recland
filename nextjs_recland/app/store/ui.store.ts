@@ -4,15 +4,11 @@ import { create } from 'zustand';
 
 type UIStore = {
     isMenuOpen: boolean;
-    isScroll: boolean;
 
     setIsMenuOpen: (
         value: boolean
     ) => void;
 
-    setIsScroll: (
-        value: boolean
-    ) => void;
 
     toggleMenu: () => void;
 };
@@ -27,10 +23,6 @@ export const useUIStore =
                 isMenuOpen: value,
             }),
 
-        setIsScroll: (value) =>
-            set({
-                isScroll: value,
-            }),
 
         toggleMenu: () =>
             set((state) => ({

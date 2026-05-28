@@ -1,32 +1,23 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useUIStore } from '@/store/ui.store';
+import { useEffect, useState, useRef } from "react";
 
 export function useScroll() {
-    const setIsScroll =
-        useUIStore(
-            (state) =>
-                state.setIsScroll
-        );
+  const [isScroll, setIsScroll] = useState(false);
+const menuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    function handleScroll() {
+      setIsScroll(window.scrollY > 50);
+    }
 
-    useEffect(() => {
-        function handleScroll() {
-            setIsScroll(
-                window.scrollY > 50
-            );
-        }
+    // check ngay khi mount
+    handleScroll();
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-        window.addEventListener(
-            'scroll',
-            handleScroll
-        );
-
-        return () => {
-            window.removeEventListener(
-                'scroll',
-                handleScroll
-            );
-        };
-    }, [setIsScroll]);
+  return isScroll;
 }

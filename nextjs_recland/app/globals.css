@@ -1,190 +1,197 @@
 @import "tailwindcss";
 
 @theme {
-    --color-topbar-color: oklch(0.4013 0.0664 220.58);
-    --color-footer-color: rgba(23, 103, 123, 0.1);
-    --text-dafuq: 100rem;
-    --font-omega: "BROmegaVN", sans-serif;
-    --breakpoint-*: initial;
-    --breakpoint-tablet: 48rem;
-    --breakpoint-laptop: 64rem;
-    --breakpoint-desktop: 80rem;
+  --color-topbar-color: oklch(0.4013 0.0664 220.58);
+  --color-footer-color: rgba(23, 103, 123, 0.1);
+  --gradient-ctv-card: linear-gradient(
+    180deg,
+    rgba(254, 247, 205, 0.06) 9.62%,
+    rgba(250, 213, 11, 0.46) 171.15%
+  );
+  --text-dafuq: 100rem;
+  --font-omega: "BROmegaVN", sans-serif;
+}
+
+:root {
+  --bg-hero: url("/images/graphics/bg-top.jpg");
+  --bg-top-ctv-btn: url("/images/graphics/bg-btn.png");
+  --bg-top-ctv: url("/images/graphics/m_bg-ctv.png");
 }
 
 /* 1. Định nghĩa font-face như bình thường */
 @font-face {
-    font-family: "BROmegaVN";
-    src: url("/fonts/BROmegaVN/BROmegaVN-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
+  font-family: "BROmegaVN";
+  src: url("/fonts/BROmegaVN/BROmegaVN-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "BROmegaVN";
-    src: url("/fonts/BROmegaVN/BROmegaVN-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-display: swap;
+  font-family: "BROmegaVN";
+  src: url("/fonts/BROmegaVN/BROmegaVN-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
 }
 
 @layer base {
-    /* http://meyerweb.com/eric/tools/css/reset/ 
+  /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
 
-    html,
-    body,
-    div,
-    span,
-    applet,
-    object,
-    iframe,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    blockquote,
-    pre,
-    a,
-    abbr,
-    acronym,
-    address,
-    big,
-    cite,
-    code,
-    del,
-    dfn,
-    em,
-    img,
-    ins,
-    kbd,
-    q,
-    s,
-    samp,
-    small,
-    strike,
-    strong,
-    sub,
-    sup,
-    tt,
-    var,
-    b,
-    u,
-    i,
-    center,
-    dl,
-    dt,
-    dd,
-    ol,
-    ul,
-    li,
-    fieldset,
-    form,
-    label,
-    legend,
-    table,
-    caption,
-    tbody,
-    tfoot,
-    thead,
-    tr,
-    th,
-    td,
-    article,
-    aside,
-    canvas,
-    details,
-    embed,
-    figure,
-    figcaption,
-    footer,
-    header,
-    hgroup,
-    menu,
-    nav,
-    output,
-    ruby,
-    section,
-    summary,
-    time,
-    mark,
-    audio,
-    video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-    }
-    /* HTML5 display-role reset for older browsers */
-    article,
-    aside,
-    details,
-    figcaption,
-    figure,
-    footer,
-    header,
-    hgroup,
-    menu,
-    nav,
-    section {
-        display: block;
-    }
-    body {
-        line-height: 1;
-    }
-    ol,
-    ul {
-        list-style: none;
-    }
-    blockquote,
-    q {
-        quotes: none;
-    }
-    blockquote:before,
-    blockquote:after,
-    q:before,
-    q:after {
-        content: "";
-        content: none;
-    }
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: "";
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 }
 
 * {
-    box-sizing: inherit;
-    /* outline: 1px solid red !important; */
+  box-sizing: inherit;
+  /* outline: 1px solid red !important; */
 }
 
 html {
-    box-sizing: border-box;
-    /* font-size: 62.5%; */
-    scroll-behavior: smooth !important;
-    overflow-x: hidden;
-    font-family: var(--font-omega);
-    color: #7b9ca4;
-    ::-webkit-scrollbar {
-        /* background-color: #fff;
+  box-sizing: border-box;
+  /* font-size: 62.5%; */
+  scroll-behavior: smooth !important;
+  overflow-x: hidden;
+  font-family: var(--font-omega);
+  color: #7b9ca4;
+  ::-webkit-scrollbar {
+    /* background-color: #fff;
         width: 1px; */
-        display: none;
-    }
+    display: none;
+  }
 }
 
 #mobile_nav > li {
-    /* padding-top: 10px;
+  /* padding-top: 10px;
     padding-bottom: 10px;
     flex-grow: 1; */
 }
 
 body {
-    height: fit-content;
+  height: fit-content;
 }
 
 /* body::-webkit-scrollbar {
