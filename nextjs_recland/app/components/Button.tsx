@@ -17,8 +17,11 @@ export default function Button({
   type = "button",
 }: ButtonProps) {
   const baseStyles = `
+        flex
+        items-center
+        justify-center
         w-full
-        min-w-60
+        min-w-fit
         max-w-120
         py-4
         laptop:py-3

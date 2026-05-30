@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <div
         id="app"
-        className="relative top-0 w-screen h-2500 max-w-7xl border-x"
+        className="w-screen h-2500 border-x"
       >
         {/* Navigation */}
         <header className="w-fit">

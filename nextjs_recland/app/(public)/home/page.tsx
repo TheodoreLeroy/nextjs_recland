@@ -1,9 +1,26 @@
 "use client";
 import Button from "@/app/components/Button";
+import Image from "next/image";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { FaWheatAwn } from "react-icons/fa6";
-import { TOP_CTV } from "@/app/constants/navigation";
+import { TbFlameFilled } from "react-icons/tb";
+import {
+  TOP_CTV,
+  SECTION2_ANALYZE,
+  PARTNERS_IMAGE,
+  JOBS_CATEGORY,
+  RECRUITER_CONTENT,
+} from "@/app/constants/homepage";
+import map_hri from "@/public/images/graphics/map_hri.gif";
+import JobSlider from "@/app/components/JobSlider";
+import { FaPlus } from "react-icons/fa";
+import Link from "next/link";
+import FeatureTabs, {
+  HRContent,
+  RecruiterContent,
+} from "@/app/components/FeatureTabs";
+
 interface TopCtvProps {
   isOpen: boolean;
   onClose: () => void;
@@ -11,12 +28,13 @@ interface TopCtvProps {
 
 export default function HomePage() {
   const [isShowTopCtv, setIsShowTopCtv] = useState<boolean>(false);
-
+  const [activeTab, setActiveTab] = useState<"hr" | "employer">("hr");
   return (
     <>
+      {/* Section 1 */}
       <section
         id="hero"
-        className="relative top-0 left-0 z-9 flex h-screen flex-col bg-(image:--bg-hero) bg-cover bg-no-repeat pt-40"
+        className="relative top-0 left-0 z-9 h-screen bg-(image:--bg-hero) bg-fixed bg-no-repeat pt-40"
       >
         {/* Hero */}
         <h1 className="mx-4 justify-center text-5xl font-black text-gray-300">
@@ -45,6 +63,95 @@ export default function HomePage() {
 
         <TopCtv isOpen={isShowTopCtv} onClose={() => setIsShowTopCtv(false)} />
       </section>
+      {/* section 2 */}
+      <section className="h-fit w-screen gap-5">
+        <div className="mx-6 flex flex-wrap justify-center">
+          <Image
+            src={map_hri}
+            alt="World map"
+            width={400}
+            height={400}
+            className="my-4 object-contain"
+          />
+          <h2 className="mb-5 text-3xl font-bold text-main">
+            Nền tảng thương mại điện tử tuyển dụng hàng đầu Việt Nam
+          </h2>
+          <p className="text-md mb-4 text-gray-400">
+            Recland là một đơn vị thành viên trong hệ sinh thái HRI, Recland
+            cung cấp nền tảng thương mại điện tử tuyển dụng để cộng tác viên
+            tuyển dụng có thể kiếm tiền bằng cách giới thiệu, kết nối các ứng
+            viên ứng tuyển cho các doanh nghiệp.Cộng tác viên có thể chủ động
+            làm việc, gia tăng thu nhập không giới hạn tại bất cứ đâu, bất cứ
+            thời gian nào
+          </p>
+
+          <dl className="flex max-h-fit max-w-160 flex-1 grid-cols-2 flex-wrap">
+            {SECTION2_ANALYZE.map((item) => {
+              return (
+                <div className="w-1/2 py-5" key={item.description}>
+                  <dt className="text-2xl font-semibold text-[#129ab2]">
+                    {item.total}+
+                  </dt>
+                  <dd className="w-2/3 text-wrap">{item.description}</dd>
+                </div>
+              );
+            })}
+          </dl>
+        </div>
+        <Button
+          children={
+            <>
+              Khám phá <FaArrowRight />
+            </>
+          }
+          className="mx-6 my-5 w-40"
+        />
+      </section>
+      {/* Running banner partners*/}
+      <section className="flex h-16 items-center bg-gray-300">
+        <BannerLoop />
+      </section>
+
+      {/* Section4 */}
+      <section className="mt-10 h-fit">
+        <div className="mx-6 text-center">
+          <h2 className="mb-2 text-3xl font-bold text-main">
+            Cơ hội kiếm tiền không giới hạn
+          </h2>
+          <h3 className="text-md mb-4 leading-6 text-gray-400">
+            200.000+ Job xịn – thưởng cao đến từ các doanh nghiệp lớn hàng đầu
+            được cập nhật hàng ngày
+          </h3>
+          <div className="mb-8 flex flex-wrap justify-center gap-1">
+            {JOBS_CATEGORY.map((cate) => {
+              return (
+                <Link
+                  key={cate.id}
+                  href={`#`}
+                  className="h-fit w-fit rounded-2xl bg-gray-200 px-5 py-2 text-center text-sm text-nowrap text-main"
+                >
+                  {cate.title}
+                </Link>
+              );
+            })}
+          </div>
+          <JobSlider />
+          <div className="flex justify-center">
+            <Button variant="outlined" className="mt-6 w-40 py-4">
+              Xem tất cả
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5 */}
+      <section className="my-5 h-fit w-screen px-5">
+        <h2 className="text-3xl font-bold text-main">
+          Vì sao lại chọn Recland?
+        </h2>
+        <FeatureTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="mt-10">{activeTab === "hr" ? <HRContent /> : <RecruiterContent />}</div>
+      </section>
     </>
   );
 }
@@ -63,32 +170,70 @@ const TopCtv = ({ isOpen, onClose }: TopCtvProps) => {
       </button>
 
       {/* Top CTV showcase */}
-      <div className="absolute top-30 flex h-[82%] w-full flex-col items-center">
-        <div className="inline-flex h-144 w-full flex-col items-center bg-(image:--bg-top-ctv) bg-size-[100%_36rem] bg-no-repeat pt-8">
-          <header className="flex gap-2 text-xl font-semibold text-white">
-            <FaWheatAwn fill="#33DAFF" className="rotate-y-179" />
-            <span>Top cộng tác viên</span>
-            <FaWheatAwn fill="#33DAFF" />
-          </header>
-          <table className="w-60 text-white">
-            <ol type="1" className="gap-5 flex flex-col">
-              {TOP_CTV.map((ctv, index) => {
-                return (
-                  <li
-                    key={ctv.id}
-                    className="flex justify-between items-center h-12 w-100% rounded-sm border-x border-gray-200 bg-(image:--gradient-ctv-card)"
-                  >
-                    <div className="">
-                      <span>{index + 1}</span>
-                      {ctv.name}
-                    </div>
-                    {ctv.salary}
-                  </li>
-                );
-              })}
-            </ol>
-          </table>
+      <div className="mx-auto mt-8 flex h-120 w-110 flex-col items-center self-center bg-(image:--bg-top-ctv) bg-[length:28rem_30rem] bg-center bg-no-repeat">
+        <header className="mt-7 flex gap-2 text-xl font-semibold text-white">
+          <FaWheatAwn fill="#33DAFF" className="rotate-y-179" />
+          <span>Top cộng tác viên</span>
+          <FaWheatAwn fill="#33DAFF" />
+        </header>
+        <div className="mt-5 w-72 font-bold text-white">
+          <ol type="1" className="flex flex-col gap-5">
+            {TOP_CTV.map((ctv, index) => {
+              return (
+                <li
+                  key={ctv.id}
+                  className="w-100% flex h-12 items-center justify-between rounded-sm border-x border-gray-200 bg-(image:--gradient-ctv-card) px-4"
+                >
+                  <div className="flex w-fit gap-2">
+                    <span>{index + 1}</span>
+                    {ctv.name}
+                    <svg width="26" height="26" viewBox="0 0 24 24">
+                      <defs>
+                        <linearGradient
+                          id="flameGradient"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop offset="0%" stopColor="#fde68a" />
+                          <stop offset="50%" stopColor="#f97316" />
+                          <stop offset="100%" stopColor="#dc2626" />
+                        </linearGradient>
+                      </defs>
+
+                      <TbFlameFilled fill="url(#flameGradient)" />
+                    </svg>
+                  </div>
+                  <span>&#36; {ctv.salary}</span>
+                </li>
+              );
+            })}
+          </ol>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const BannerLoop = () => {
+  return (
+    <div className="w-full overflow-hidden">
+      <div className="flex w-max animate-marquee items-center gap-2">
+        {[...PARTNERS_IMAGE, ...PARTNERS_IMAGE].map((item, index) => (
+          <div
+            key={`${item.id}-${index}`}
+            className="flex h-6 w-36 shrink-0 items-center justify-center"
+          >
+            <Image
+              src={item.href}
+              alt={item.alt}
+              width={144}
+              height={80}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

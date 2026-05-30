@@ -2,14 +2,38 @@
 
 @theme {
   --color-topbar-color: oklch(0.4013 0.0664 220.58);
+  --color-main: rgb(23, 103, 123);
   --color-footer-color: rgba(23, 103, 123, 0.1);
   --gradient-ctv-card: linear-gradient(
     180deg,
     rgba(254, 247, 205, 0.06) 9.62%,
     rgba(250, 213, 11, 0.46) 171.15%
   );
+  --gradient-ctv-hot: linear-gradient(
+    180deg,
+    rgba(255, 237, 213, 0.06) 9.62%,
+    rgba(255, 98, 0, 0.46) 171.15%
+  );
+
+  --gradient-job-card: linear-gradient(
+    187deg,
+    rgb(23, 103, 123) 49.54%,
+    rgb(18, 154, 178) 101.91%
+  );
+
   --text-dafuq: 100rem;
   --font-omega: "BROmegaVN", sans-serif;
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 :root {
