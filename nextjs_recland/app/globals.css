@@ -40,6 +40,7 @@
   --bg-hero: url("/images/graphics/bg-top.jpg");
   --bg-top-ctv-btn: url("/images/graphics/bg-btn.png");
   --bg-top-ctv: url("/images/graphics/m_bg-ctv.png");
+  --bg-home-bonus: url("/images/graphics/mobile/m_bg-bonus.png");
 }
 
 /* 1. Định nghĩa font-face như bình thường */

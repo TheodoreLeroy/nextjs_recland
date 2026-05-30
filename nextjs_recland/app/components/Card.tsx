@@ -13,14 +13,22 @@ interface JobCardProps {
   className?: string;
 }
 
-export default function JobCard({
+interface ReviewCardProps {
+  avatar: string;
+  author: string;
+  role: string;
+  review: string;
+  className?: string;
+}
+
+export const JobCard = ({
   company,
   location,
   position,
   salary,
   tags,
   className,
-}: JobCardProps) {
+}: JobCardProps) => {
   const baseStyles = `
         w-full
         h-96
@@ -54,7 +62,7 @@ export default function JobCard({
               {company}
             </h4>
 
-            <p className="flex mt-1 text-sm text-gray-400">
+            <p className="mt-1 flex text-sm text-gray-400">
               <IoLocationOutline /> {location}
             </p>
           </div>
@@ -84,4 +92,32 @@ export default function JobCard({
       </div>
     </div>
   );
-}
+};
+
+export const ReviewCard = ({
+  avatar,
+  author,
+  role,
+  review,
+  className,
+}: ReviewCardProps) => {
+  const baseStye = `h-90 w-70 rounded-2xl border-2 border-blue-400 p-6`;
+  return (
+    <div className={twMerge(baseStye, className)}>
+      <div className="flex items-center w-full border-b border-b-sky-300 gap-6 pb-6">
+        <Image
+          src={avatar}
+          alt=""
+          width={80}
+          height={80}
+          className="rounded-full"
+        />
+        <div>
+          <h5 className="text-xl font-bold text-main ">{author}</h5>
+          <h6 className="text-lg">{role}</h6>
+        </div>
+      </div>
+      <p className="text-lg leading-8 mt-4">{review}</p>
+    </div>
+  );
+};

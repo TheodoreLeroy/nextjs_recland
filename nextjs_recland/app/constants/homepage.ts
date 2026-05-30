@@ -172,3 +172,15 @@ export const RECRUITER_CONTENT = [
             "Công nghệ tuyển dụng và theo dõi hiệu quả tuyển dụng trực tuyến\nThu hút và giữ chân nhân tài hiệu quả.",
     },
 ];
+
+export const BONUS = [
+  {id: 1, icon: "/images/icons/icon-briefcase752b.png" , total: "22.260", description: "Việc làm tại Recland"},
+  {id: 2, icon: "/images/icons/icon-office752b.png" , total: "1.543", description: "Nhà tuyển dụng"},
+  {id: 3, icon: "/images/icons/icon-loan752b.png" , total: "22.260", description: "CTV đã nhận thưởng"},
+]
+
+export const CTV_REVIEWS = [
+  {id: 1, avatar:"/images/other/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Mình thật bất ngờ về sự nhiệt tình, tận tâm của đội ngũ HRI Recland. Các Job IT tại đây khá đa dạng nên mình có thể chọn những job thế mạnh và giới thiệu được ứng viên thành công. "},
+  {id: 1, avatar:"/images/other/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Quy trình, tiến độ làm việc rất nhanh. Bình thường hồ sơ của mình sẽ được check trong ngày luôn. Nguồn job ổn định. Highly recommend các bạn HR tham gia để giao lưu và kiếm thêm thu nhập."},
+  {id: 1, avatar:"/images/other/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Mặc dù em là sinh viên chưa có kinh nghiệm nhiều nhưng em được các anh chị trong cộng đồng hỗ trợ rất nhiều từ cách chọn job, giới thiệu cũng như quy trình tuyển dụng nên em đã có ứng viên Pass PV."},
+]

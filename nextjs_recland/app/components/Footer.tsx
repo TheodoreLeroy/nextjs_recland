@@ -12,9 +12,9 @@ export const Footer = () => {
         <footer
             id="page_footer"
             className="
-                    absolute
-                    -z-10
-                    top-400
+                    
+                    
+                    
                     left-0
                     bottom-0
                     w-screen

@@ -16,13 +16,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <div
         id="app"
-        className="w-screen h-2500 border-x"
+        className="w-screen h-fit border-x"
       >
         {/* Navigation */}
         <header className="w-fit">
           <TopNavBar />
         </header>
         {children}
+        <Footer/>
       </div>
     </>
   );

@@ -11,9 +11,10 @@ import {
   PARTNERS_IMAGE,
   JOBS_CATEGORY,
   RECRUITER_CONTENT,
+  BONUS,
 } from "@/app/constants/homepage";
 import map_hri from "@/public/images/graphics/map_hri.gif";
-import JobSlider from "@/app/components/JobSlider";
+import { JobSlider, ReviewSlider } from "@/app/components/Slider";
 import { FaPlus } from "react-icons/fa";
 import Link from "next/link";
 import FeatureTabs, {
@@ -150,7 +151,47 @@ export default function HomePage() {
           Vì sao lại chọn Recland?
         </h2>
         <FeatureTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        <div className="mt-10">{activeTab === "hr" ? <HRContent /> : <RecruiterContent />}</div>
+        <div className="mt-10">
+          {activeTab === "hr" ? <HRContent /> : <RecruiterContent />}
+        </div>
+        <div className="flex justify-center">
+          <Image
+            src="/images/graphics/m_recland752b.png"
+            alt="Recland onboard"
+            width={400}
+            height={400}
+            className="h-fit w-120"
+          ></Image>
+        </div>
+        <div className="flex w-full justify-center">
+          <div className="flex h-200 w-90 flex-col items-center justify-center gap-8 bg-(image:--bg-home-bonus) bg-contain bg-no-repeat px-10 pt-86">
+            {BONUS.map((item) => {
+              return (
+                <div className="flex w-full gap-4 border-b pb-3">
+                  <span>
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      width={60}
+                      height={60}
+                    ></Image>
+                  </span>
+                  <div className="">
+                    <strong className="text-4xl font-bold text-white">
+                      {item.total}
+                    </strong>
+                    <p className="text-md mt-2 text-blue-200">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="h-fit w-full">
+          <ReviewSlider />
+        </div>
       </section>
     </>
   );
