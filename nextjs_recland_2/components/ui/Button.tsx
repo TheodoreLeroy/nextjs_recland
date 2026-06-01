@@ -32,6 +32,7 @@ export default function Button({
         font-semibold
         transition-all
         duration-300
+        cursor-pointer
         hover:scale-[1.02]
         active:scale-[0.98]
         text-nowrap

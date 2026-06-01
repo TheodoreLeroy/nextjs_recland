@@ -4,9 +4,10 @@ import FeatureTabs from "@/components/ui/FeatureTab";
 import { HR_CONTENT, RECRUITER_CONTENT } from "@/constants/feature";
 import { useState } from "react";
 import Image from "next/image";
-
+import SwitchTabs from "@/components/ui/SwitchTab";
+type FeatureTab = "hr" | "employer";
 export default function FeatureSection() {
-  const [activeTab, setActiveTab] = useState<"hr" | "employer">("hr");
+  const [activeTab, setActiveTab] = useState<FeatureTab>("hr");
   return (
     <section className="relative min-h-screen">
       <Container>
@@ -16,11 +17,24 @@ export default function FeatureSection() {
               Vì sao lại chọn Recland?
             </h2>
             <div>
-              <FeatureTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+              <SwitchTabs
+                value={activeTab}
+                onChange={(value) => setActiveTab(value as "hr" | "employer")}
+                options={[
+                  {
+                    label: "Đối với HR",
+                    value: "hr",
+                  },
+                  {
+                    label: "Đối với Nhà tuyển dụng",
+                    value: "employer",
+                  },
+                ]}
+              />
               {activeTab === "hr" ? <HRContent /> : <RecruiterContent />}
             </div>
           </div>
-          <div className="flex justify-center mt-10">
+          <div className="mt-10 flex justify-center">
             <Image
               src="/recland752b.png"
               alt="Recland onboard"
