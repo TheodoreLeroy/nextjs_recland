@@ -1,0 +1,21 @@
+import HeroSection from "@/components/sections/home/HeroSection";
+import AboutSection from "@/components/sections/home/AboutSection";
+import PartnerSection from "@/components/sections/home/PartnerSection";
+import JobsSection from "@/components/sections/home/JobsSection";
+import FeatureSection from "@/components/sections/home/FeatureSection";
+import BonusSection from "@/components/sections/home/BonusSection";
+import ReviewSection from "@/components/sections/home/ReviewSection";
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <AboutSection />
+      {/* <PartnerSection />
+      <JobsSection />
+      <FeatureSection />
+      <BonusSection />
+      <ReviewSection /> */}
+    </>
+  );
+}

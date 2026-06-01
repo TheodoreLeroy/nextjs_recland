@@ -1,0 +1,5 @@
+export const CTV_REVIEWS = [
+  {id: 1, avatar:"/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Mình thật bất ngờ về sự nhiệt tình, tận tâm của đội ngũ HRI Recland. Các Job IT tại đây khá đa dạng nên mình có thể chọn những job thế mạnh và giới thiệu được ứng viên thành công. "},
+  {id: 2, avatar:"/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Quy trình, tiến độ làm việc rất nhanh. Bình thường hồ sơ của mình sẽ được check trong ngày luôn. Nguồn job ổn định. Highly recommend các bạn HR tham gia để giao lưu và kiếm thêm thu nhập."},
+  {id: 3, avatar:"/avatar_6752b.jpg", author: "Đặng Thị Hoài Thu", role: "Headhunter", review: "Mặc dù em là sinh viên chưa có kinh nghiệm nhiều nhưng em được các anh chị trong cộng đồng hỗ trợ rất nhiều từ cách chọn job, giới thiệu cũng như quy trình tuyển dụng nên em đã có ứng viên Pass PV."},
+]

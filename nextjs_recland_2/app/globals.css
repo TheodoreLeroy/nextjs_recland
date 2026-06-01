@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-topbar-color: oklch(0.4013 0.0664 220.58);
+  --color-footer-color: rgba(23, 103, 123, 0.1);
+  --color-main: #17677b;
+  --color-button-text: #17677b;
+  --color-button-bg: #f9ac4e;
+  --font-sans: BROmegaVN, ui-sans-serif, system-ui, sans-serif;
+  --color-footer-text: #7b9ca4;
+  --bg-hero: url("/bg-top.jpg");
+  --bg-bonus: url("/desktop/bg-bonus.png");
+  --m-bg-bonus: url("/mobile/m_bg-bonus.png");
+  --gradient-ctv-card: linear-gradient(
+    180deg,
+    rgba(254, 247, 205, 0.06) 9.62%,
+    rgba(250, 213, 11, 0.46) 171.15%
+  );
+  --gradient-job-card: linear-gradient(
+    187deg,
+    rgb(23, 103, 123) 49.54%,
+    rgb(18, 154, 178) 101.91%
+  );
+
+  --animate-marquee: marquee 20s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  /* --bs-font-sans-serif:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace:
+    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace; */
+}
+@font-face {
+  font-display: swap;
+  font-family: BROmegaVN;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/BROmegaVN/fontsBROmegaVN-Regular.html);
+  src:
+    url(/fonts/BROmegaVN/BROmegaVN-Regulard41d.eot?#iefix)
+      format("embedded-opentype"),
+    url(/fonts/BROmegaVN/BROmegaVN-Regular.woff2) format("woff2"),
+    url(/fonts/BROmegaVN/BROmegaVN-Regular.woff) format("woff"),
+    url(/fonts/BROmegaVN/BROmegaVN-Regular.ttf) format("truetype"),
+    url(/fonts/BROmegaVN/BROmegaVN-Regular.svg#BROmegaVN-Regular) format("svg");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: BROmegaVN;
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/BROmegaVN/BROmegaVN-Bold.eot);
+  src:
+    url(/fonts/BROmegaVN/BROmegaVN-Boldd41d.eot?#iefix)
+      format("embedded-opentype"),
+    url(/fonts/BROmegaVN/BROmegaVN-Bold.woff2) format("woff2"),
+    url(/fonts/BROmegaVN/BROmegaVN-Bold.woff) format("woff"),
+    url(/fonts/BROmegaVN/BROmegaVN-Bold.ttf) format("truetype"),
+    url(/fonts/BROmegaVN/BROmegaVN-Bold.svg#BROmegaVN-Bold) format("svg");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --background: #0a0a0a; */
+    /* --foreground: #ededed; */
+    --m-bg-top-ctv-btn: url("/mobile/m_bg-btn.png");
+    --m-bg-top-ctv: url("/mobile/m_bg-ctv.png");
+    --bg-top-ctv: url("/desktop/bg-ctv.png");
+  }
+}
+
+body {
+  margin: 0;
+  /* font-family: var(--font-sans); */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
