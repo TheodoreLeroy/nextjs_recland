@@ -8,7 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-topbar-color: oklch(0.4013 0.0664 220.58);
+  --color-topbar-color: #115061;
   --color-footer-color: rgba(23, 103, 123, 0.1);
   --color-main: #17677b;
   --color-button-text: #17677b;

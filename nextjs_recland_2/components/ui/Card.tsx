@@ -131,7 +131,7 @@ export const ReviewCard = ({
             <p className="mt-0.5 text-sm font-medium text-gray-400">{role}</p>
           </div>
         </div>
-        <p className="line-clamp-5 overflow-scroll text-start text-base leading-relaxed text-gray-600 italic">
+        <p className="line-clamp-5 overflow-scroll text-start text-base leading-relaxed text-gray-600 italic overflow-x-hidden overflow-y-auto">
           "{review}"
         </p>
       </div>

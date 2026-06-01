@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "@/components/layouts/Navigation";
 import Footer from "@/components/layouts/Footer";
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +16,9 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`h-full antialiased`}>
       <body className="flex min-h-full flex-col gap-6">
+        <Navigation />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
