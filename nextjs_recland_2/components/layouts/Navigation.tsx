@@ -39,8 +39,8 @@ export default function Navigation({ className }: Props) {
           ? isScroll
             ? "bg-topbar-color"
             : "bg-transparent"
-          : "bg-white"
-      } ${isHomePage && isScroll ? "" : "shadow-md"} ${className}`}
+          : "bg-white shadow-md"
+      } ${className}`}
     >
       {/* Left */}
       <div className="flex items-center">

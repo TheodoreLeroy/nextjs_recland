@@ -9,6 +9,7 @@ import ReviewSection from "@/components/sections/home/ReviewSection";
 export default function Home() {
   return (
     <>
+    
         <HeroSection />
         <AboutSection />
         <PartnerSection />

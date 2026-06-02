@@ -2,18 +2,22 @@ interface TabOption {
   label: string;
   value: string;
 }
-
-interface SwitchTabsProps {
-  value: string;
-  onChange: (value: string) => void;
-  options: TabOption[];
+interface SwitchTabsProps<T extends string = string> {
+  value: T;
+  onChange: (value: T) => void;
+  options: {
+    label: string;
+    value: T;
+  }[];
+  className?: string;
 }
 
-export default function SwitchTabs({
+export default function SwitchTabs<T extends string>({
   value,
   onChange,
   options,
-}: SwitchTabsProps) {
+  className,
+}: SwitchTabsProps<T>) {
   const activeIndex = options.findIndex((option) => option.value === value);
 
   return (

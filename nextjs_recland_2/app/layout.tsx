@@ -16,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`h-full antialiased`}>
       <body className="flex min-h-full flex-col gap-6">
-        <Navigation />
+        
         {children}
-        <Footer />
+        
       </body>
     </html>
   );

@@ -22,6 +22,18 @@ interface ReviewCardProps {
   className?: string;
 }
 
+interface CardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+export const Card = ({ children, className }: CardProps) => {
+  const baseStyles = `
+    min-w-120
+    min-h-140
+  `;
+  return <div className={twMerge(baseStyles, className)}>{children}</div>;
+};
+
 export const JobCard = ({
   image,
   company,
@@ -131,7 +143,7 @@ export const ReviewCard = ({
             <p className="mt-0.5 text-sm font-medium text-gray-400">{role}</p>
           </div>
         </div>
-        <p className="line-clamp-5 overflow-scroll text-start text-base leading-relaxed text-gray-600 italic overflow-x-hidden overflow-y-auto">
+        <p className="line-clamp-5 overflow-scroll overflow-x-hidden overflow-y-auto text-start text-base leading-relaxed text-gray-600 italic">
           "{review}"
         </p>
       </div>
