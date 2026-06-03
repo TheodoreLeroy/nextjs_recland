@@ -28,8 +28,8 @@ interface CardProps {
 }
 export const Card = ({ children, className }: CardProps) => {
   const baseStyles = `
-    min-w-120
-    min-h-140
+    min-w-60
+    min-h-60
   `;
   return <div className={twMerge(baseStyles, className)}>{children}</div>;
 };

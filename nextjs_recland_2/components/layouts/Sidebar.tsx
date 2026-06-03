@@ -22,7 +22,7 @@ export default function Sidebar({ role }: SidebarProps) {
             R
           </div>
           <span className="text-lg font-semibold tracking-wide">
-            Recland Admin
+            Recland {role}
           </span>
         </div>
 

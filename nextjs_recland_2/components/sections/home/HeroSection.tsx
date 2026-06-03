@@ -12,7 +12,7 @@ import { TbFlameFilled } from "react-icons/tb";
 export default function HeroSection() {
   const [isShowTopCtv, setIsShowTopCtv] = useState<boolean>(false);
   return (
-    <section className="relative min-h-screen bg-(image:--bg-hero) bg-cover bg-center bg-no-repeat md:bg-position-[100%_122%]">
+    <section className="relative min-h-screen bg-(image:--bg-hero) bg-cover bg-center bg-no-repeat md:bg-position-[100%_120%]">
       <Container>
         <div className="flex min-h-screen flex-col justify-center lg:grid lg:grid-cols-2 lg:items-center">
           {/* Left hero title */}
