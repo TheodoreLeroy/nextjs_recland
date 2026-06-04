@@ -18,7 +18,7 @@ interface Props {
 export default function Navigation({ className }: Props) {
   const { isScroll } = useUIStore();
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/home";
   const isLoginPage = pathname === "/login";
   React.useEffect(() => {
     const handleScroll = () => {
