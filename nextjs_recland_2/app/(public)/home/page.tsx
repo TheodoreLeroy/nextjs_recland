@@ -9,14 +9,13 @@ import ReviewSection from "@/components/sections/home/ReviewSection";
 export default function Home() {
   return (
     <>
-    
-        <HeroSection />
-        <AboutSection />
+      <HeroSection />
+      {/* <AboutSection />
         <PartnerSection />
         <JobsSection />
         <FeatureSection />
         <BonusSection />
-        <ReviewSection />
+        <ReviewSection /> */}
     </>
   );
 }

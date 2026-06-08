@@ -15,7 +15,7 @@ interface Props {
   className?: string;
 }
 
-export default function Navigation({ className }: Props) {
+export default function   Navigation({ className }: Props) {
   const { isScroll } = useUIStore();
   const pathname = usePathname();
   const isHomePage = pathname === "/home";

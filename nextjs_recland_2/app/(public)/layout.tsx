@@ -8,9 +8,11 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Navigation />
-      {children}
-      <Footer />
+      {/* <Navigation /> */}
+      <div id="app" className="relative">
+        {children}
+      </div>
+      {/* <Footer /> */}
     </>
   );
 }
