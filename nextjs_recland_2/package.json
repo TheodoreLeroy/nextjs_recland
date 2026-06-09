@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@next/env": "16.2.6",
+    "aos": "^2.3.4",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.17.0",
     "next": "16.2.6",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.0",
     "@tauri-apps/cli": "^2.11.2",
+    "@types/aos": "^3.0.8",
     "@types/node": "25.9.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",

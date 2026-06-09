@@ -5,16 +5,17 @@ import JobsSection from "@/components/sections/home/JobSection";
 import FeatureSection from "@/components/sections/home/FeatureSection";
 import BonusSection from "@/components/sections/home/BonusSection";
 import ReviewSection from "@/components/sections/home/ReviewSection";
-
+import Image from "next/image";
 export default function Home() {
   return (
     <>
       <HeroSection />
-      {/* <AboutSection />
-        <PartnerSection />
-        <JobsSection />
+      <AboutSection />
+
+      <PartnerSection />
+      {/* <JobsSection /> */}
         <FeatureSection />
-        <BonusSection />
+        {/* <BonusSection />
         <ReviewSection /> */}
     </>
   );

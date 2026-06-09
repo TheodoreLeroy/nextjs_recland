@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/layouts/Navigation";
 import Footer from "@/components/layouts/Footer";
+import AOSProvider from "@/components/providers/AOSProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,11 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`h-full antialiased`}>
+    <html lang="vi" className={"suppressHydrationWarning h-full antialiased"}>
       <body>
-        
-        {children}
-        
+        <AOSProvider>{children}</AOSProvider>
       </body>
     </html>
   );
