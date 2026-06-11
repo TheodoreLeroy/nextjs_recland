@@ -14,12 +14,16 @@ export default function FeatureTabs({
 }: FeatureTabsProps) {
   return (
     <div className="w-full max-w-md">
-      <div className="relative flex h-14 rounded-2xl border-2 border-gray-300 bg-gray-100 p-1">
+      <div
+        className={`relative flex h-14 rounded-2xl border-2 border-gray-300
+          bg-gray-100 p-1`}
+      >
         {/* Slider */}
         <div
-          className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-xl bg-orange-400 transition-all duration-400 ease-in-out ${
-            activeTab === "hr" ? "left-1" : "left-[calc(50%+2px)]"
-          } `}
+          className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-xl
+            bg-orange-400 transition-all duration-400 ease-in-out ${
+              activeTab === "hr" ? "left-1" : "left-[calc(50%+2px)]"
+            } `}
         />
 
         {/* HR */}

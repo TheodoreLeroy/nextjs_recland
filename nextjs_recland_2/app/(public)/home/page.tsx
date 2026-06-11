@@ -3,20 +3,19 @@ import AboutSection from "@/components/sections/home/AboutSection";
 import PartnerSection from "@/components/sections/home/PartnerSection";
 import JobsSection from "@/components/sections/home/JobSection";
 import FeatureSection from "@/components/sections/home/FeatureSection";
-import BonusSection from "@/components/sections/home/BonusSection";
-import ReviewSection from "@/components/sections/home/ReviewSection";
 import Image from "next/image";
+import AIPlatform from "@/components/sections/home/AIPlatform";
+import CTASection from "@/components/sections/home/CTASection";
 export default function Home() {
   return (
     <>
       <HeroSection />
       <AboutSection />
-
       <PartnerSection />
-      {/* <JobsSection /> */}
-        <FeatureSection />
-        {/* <BonusSection />
-        <ReviewSection /> */}
+      <FeatureSection />
+      <JobsSection />
+      <AIPlatform />
+      <CTASection />
     </>
   );
 }

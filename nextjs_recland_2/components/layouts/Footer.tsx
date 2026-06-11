@@ -6,52 +6,87 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Footer() {
   return (
-    <footer className="relative min-h-fit bg-footer-color">
-      <Container>
-        <div className="flex flex-col justify-center gap-10 py-10 text-footer-text md:grid md:grid-cols-2 md:gap-4 md:text-xl lg:grid-cols-3 lg:items-center lg:gap-20">
-          {/* Logo */}
-          <div className="flex flex-col gap-4">
-            <Image
-              src={RECLAND_LOGO}
-              alt=""
-              width={200}
-              height={200}
-              className="lg:w-68"
-            />
-            <h4>Mang việc làm và ưu đãi hấp dẫn đến cho Recer và Ứng viên</h4>
-            <div className="flex items-center">
-              {SOCIAL_ICONS.map((item) => {
-                return (
-                  <Link href={"#"} key={item.id}>
-                    <Image src={item.src} alt={""} width={60} height={60} />
-                  </Link>
-                );
-              })}
+    <>
+      {/* <!--Footer--> */}
+      <footer className="footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <a className="logo" title="new-ca" href="#">
+                <img src="/images/graphics/logo752b.png" alt="" />
+                <img className="logo-white" src="/images/graphics/logo-white752b.png" alt="" />
+              </a>
+              <div className="mb40">Mang việc làm và ưu đãi hấp dẫn đến cho Recer và Ứng viên</div>
+              <div className="social flex">
+                <a target="_blank" href="https://www.facebook.com/Reclandco">
+                  <img src="/images/icons/icon-face752b.png" alt="" />
+                </a>
+                <a target="_blank" href="https://zalo.me/g/jpavpc766">
+                  <img src="/images/icons/icon-zalo752b.png" alt="" />
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/company/reclandco/">
+                  <img src="/images/icons/icon-in752b.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div className="col-md-8">
+              <div className="row">
+                <div className="col-sm-6">
+                  <h3 className="title"> Về chúng tôi</h3>
+                  <ul>
+                    <li>
+                      <a target="_blank" href="about-us.html">
+                        Giới thiệu
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="contact-us.html">
+                        Liên hệ
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="#">
+                        Đăng tuyển dụng
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="#">
+                        Tìm kiếm hồ sơ
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-sm-6">
+                  <h3 className="title">Đối tác</h3>
+                  <ul>
+                    <li>
+                      <a target="_blank" href="policy/mechanism-of-action-collaborator.html">
+                        Cơ chế hoạt động CTV
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="policy/mechanism-of-action-rec.html">
+                        Cơ chế hoạt động NTD
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="policy/terms-of-service.html">
+                        Sản phẩm và dịch vụ khác
+                      </a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="policy/privacy-policy.html">
+                        Quy định bảo mật
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-
-          {FOOTER.map((item) => {
-            return (
-              <div key={item.id}>
-                <h5 className="mb-2 text-xl font-bold text-main">
-                  {item.title}
-                </h5>
-                <ul className="mb-5 flex flex-col gap-2">
-                  {item.anchor.map((link, subIndex) => {
-                    return (
-                      <li key={subIndex}>
-                        <Link href={link.href} className="hover:underline">
-                          {link.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            );
-          })}
         </div>
-      </Container>
-    </footer>
+      </footer>
+      {/* <!--End Footer--> */}
+    </>
   );
 }

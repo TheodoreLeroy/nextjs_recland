@@ -12,7 +12,7 @@ export default function Layout({ children }: LayoutProps) {
       <div id="app" className="relative">
         {children}
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
