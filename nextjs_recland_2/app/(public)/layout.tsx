@@ -6,9 +6,10 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  
   return (
     <>
-      <Navigation />
+      <Navigation variant="secondary"/>
       <div id="app" className="relative">
         {children}
       </div>

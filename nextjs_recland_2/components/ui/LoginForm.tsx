@@ -55,9 +55,9 @@ export default function LoginForm() {
     <div
       className={`fade-in-top fixed top-1/2 left-1/2 flex min-h-160 min-w-120
         -translate-x-1/2 -translate-y-1/2 items-center justify-center
-        rounded-4xl bg-white py-30 shadow-2xl shadow-blue-700`}
+        rounded-4xl bg-white py-30 shadow-2xl shadow-cyan-800 z-50`}
     >
-      <div className="w-90 text-[#17677b]!">
+      <div className="w-90 py-8! text-[#17677b]!">
         <div className="mb-8">
           <h3 className="title-form text-4xl! font-extrabold!">
             Chào mừng bạn đến với Recland.co
@@ -77,27 +77,37 @@ export default function LoginForm() {
             </Link>
             {/* Facebook */}
             <Link
-              href={
-                "https://accounts.google.com/o/oauth2/auth?client_id=1013866890294-uufjf9e2u7083sgclovg59d46sr0s04o.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Frecland.co%2Fcallback%2Fgoogle&amp;scope=openid+profile+email&amp;response_type=code&amp;state=vluxWJMrxYzqPKOBLXFaWUL0Ivf4mvKFhLp3gM7d"
-              }
+              href={"https://www.facebook.com/v23.0/dialog/oauth?client_id=717296336214255&amp;redirect_uri=https%3A%2F%2Frecland.co%2Fcallback%2Ffacebook&amp;scope=email&amp;response_type=code&amp;state=YkdC4gnUteET819r1PAx3XlvBbezUuWR0C3THsdF"}
               className="flex flex-1 gap-2 rounded-2xl border border-cyan-400 py-2 justify-center items-center"
             >
-              <img src="/images/icons/icon-google.svg#Lock?v=20251125" alt="" />
+              <img src="/images/icons/icon-face.svg#Lock?v=20251125"  alt="" />
               <span>Google</span>
             </Link>
           </div>
-          <Form
-            form={form}
-            layout="vertical"
-            initialValues={{
-              username: "hunganh0503",
-              password: "Hunganh0503@",
-              remember: true,
-            }}
-            // onFinish={``}
-            requiredMark={false}
-            className="mt-6"
-          >
+          <Divider children={<span className="text-gray-400">Hoặc đăng nhập bằng</span>}/>
+          {/* Switch tabs */}
+          <SwitchTabs
+              value={role}
+              onChange={setRole} // 3. Truyền thẳng hàm setRole của Zustand vào đây
+              options={[
+                { label: "Candidate", value: "candidate" },
+                { label: "Recruiter", value: "recruiter" },
+                { label: "Employer", value: "employer" },
+              ]}
+              className=""
+            />
+            <Form
+              form={form}
+              layout="vertical"
+              initialValues={{
+                username: "hunganh0503",
+                password: "Hunganh0503@",
+                remember: true,
+              }}
+              requiredMark={false}
+              onFinish={onFinish}
+              className="mt-6"
+            >
             <Form.Item<FieldType>
               name="username"
               rules={[

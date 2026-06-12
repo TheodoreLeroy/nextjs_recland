@@ -23,7 +23,7 @@ interface Props {
 // Bạn nhớ định nghĩa thêm class Tailwind vào đây nếu cần nhé
 const baseStyle: Record<string, string> = {
   primary: "bg-transparent text-white transition-all duration-300",
-  secondary: "bg-[#115061] text-white shadow-md transition-all duration-300",
+  secondary: "bg-[#115061] text-white transition-all duration-300",
 };
 
 export default function Navigation({ className, variant = "primary" }: Props) {
@@ -41,6 +41,7 @@ export default function Navigation({ className, variant = "primary" }: Props) {
       const shouldScroll = scrollTop > 50;
       if (useUIStore.getState().isScroll !== shouldScroll) {
         setIsScroll(shouldScroll);
+        console.log(shouldScroll);
       }
     };
 
@@ -57,6 +58,12 @@ export default function Navigation({ className, variant = "primary" }: Props) {
     console.log("Trạng thái hiển thị Form Login:", !showLogin);
   };
 
+
+  // Hàm dùng riêng cho việc đóng login popup khi click ra ngoài
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
   // Xác định variant thực tế dựa trên việc người dùng đã cuộn trang hay chưa
   const currentVariant = isHomePage
     ? isScroll
@@ -71,9 +78,17 @@ export default function Navigation({ className, variant = "primary" }: Props) {
       className={twMerge(
         "topnav home fixed top-0 left-0 z-50 w-full",
         selectedStyle,
-        className,
+        className, isScroll && isHomePage ? "bg-[#115061]!" : ""
       )}
     >
+      {/* Blur layout */}
+      {showLogin && (
+        <div
+          className="absolute w-screen h-screen bg-black opacity-70 transition-all duration-300 z-49"
+          onClick={() => setShowLogin(false)}
+        />
+      )}
+
       <div className="container">
         <div className="flex_row flex items-center justify-between">
           {/* Mobile */}
@@ -84,6 +99,8 @@ export default function Navigation({ className, variant = "primary" }: Props) {
           <DesktopMenu
             variant={currentVariant}
             onLoginClick={handleLoginButton}
+            isHomePage={isHomePage}
+            isScroll={isScroll}
           />
 
           {/* Login popup */}
@@ -128,16 +145,18 @@ function MobileMenu({ variant = "primary" }: Props) {
 // Thêm prop onLoginClick vào interface riêng của DesktopMenu để truyền hàm xử lý sự kiện xuống
 interface DesktopMenuProps extends Props {
   onLoginClick?: () => void;
+  isHomePage: boolean
+  isScroll: boolean
 }
 
-function DesktopMenu({ variant = "primary", onLoginClick }: DesktopMenuProps) {
+function DesktopMenu({ variant = "primary", isHomePage = true, isScroll, onLoginClick }: DesktopMenuProps) {
   return (
-    <div className="flex_right flex items-center gap-4">
+    <div className="flex_right flex items-center justify-between w-full">
       <div className="main-menu">
         <ul className="nav mb-0 flex list-none items-center pl-0">
           <li className="logo">
             <Link title="new-ca" href="/home">
-              {variant === "primary" ? (
+              {isHomePage ? (
                 <picture className="logo-white">
                   <source
                     media="(min-width:650px)"
@@ -200,7 +219,7 @@ function DesktopMenu({ variant = "primary", onLoginClick }: DesktopMenuProps) {
                 w-[300px] group-hover:block`}
             >
               <div className="border-warning border-t-4"></div>
-              <div className="card-body bg-white p-6 shadow-lg">
+              <div className={`card-body bg-white p-6 shadow-lg`}>
                 <div className="row g-4 -mx-6 flex flex-wrap">
                   <div className="col-12 flex-[0_0_auto] px-6">
                     <ul className="list-unstyled mb-0 list-none pl-0">
@@ -266,8 +285,8 @@ function DesktopMenu({ variant = "primary", onLoginClick }: DesktopMenuProps) {
             alt="EN Flag"
           />
         </a>
-        {/* ✅ SỬA LỖI 3: Truyền hàm handleLoginButton thông qua prop onLoginClick */}
-        <Button className="btn-default items-center" onClick={onLoginClick}>
+        
+        <Button className="bg-[#f9ac4e] px-8! py-3 rounded-2xl! items-center" onClick={onLoginClick}>
           Đăng nhập
         </Button>
       </div>
